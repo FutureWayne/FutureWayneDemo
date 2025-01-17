@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Test | Future Wayne</title>
+<meta name="keywords" content="">
+<meta name="description" content="Kaboom Arena
+Core Game Loop
+
+Team Death Match
+All teammate damage is enabled (friendly fire).
+
+Combat
+Main Input
+
+Left Mouse: Tossing
+Right Mouse: Interaction
+
+Grenade
+Grenade Definition
+
+Players must pick up grenades from [Grenade Pickup](app://obsidian.md/index.html#grenade pickup) locations on the map.
+Each toss consumes one grenade from the player&rsquo;s Inventory.
+
+Grenade Damage
+
+Direct Hit: Instant kill.
+Area of Effect (AOE): Damage decreases with distance from the explosion center.
+
+Special Grenades
+Special grenades apply unique effects in addition to the base grenade damage.">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/docs/test/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/docs/test/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="Future Wayne (Alt + H)">Future Wayne</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Test
+    </h1>
+    <div class="post-meta"><span title='2025-01-17 15:29:53 -0700 MST'>January 17, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Kaboom Arena</p>
+<h1 id="core-game-loop">Core Game Loop<a hidden class="anchor" aria-hidden="true" href="#core-game-loop">#</a></h1>
+<ul>
+<li>Team Death Match</li>
+<li>All teammate damage is enabled (friendly fire).</li>
+</ul>
+<h1 id="combat">Combat<a hidden class="anchor" aria-hidden="true" href="#combat">#</a></h1>
+<h2 id="main-input">Main Input<a hidden class="anchor" aria-hidden="true" href="#main-input">#</a></h2>
+<ul>
+<li><strong>Left Mouse</strong>: <a href="app://obsidian.md/index.html#tossing">Tossing</a></li>
+<li><strong>Right Mouse</strong>: <a href="app://obsidian.md/index.html#interaction">Interaction</a></li>
+</ul>
+<h2 id="grenade">Grenade<a hidden class="anchor" aria-hidden="true" href="#grenade">#</a></h2>
+<h3 id="grenade-definition">Grenade Definition<a hidden class="anchor" aria-hidden="true" href="#grenade-definition">#</a></h3>
+<ul>
+<li>Players must pick up grenades from [Grenade Pickup](app://obsidian.md/index.html#grenade pickup) locations on the map.</li>
+<li>Each toss consumes one grenade from the player&rsquo;s <a href="app://obsidian.md/index.html#inventory">Inventory</a>.</li>
+</ul>
+<h3 id="grenade-damage">Grenade Damage<a hidden class="anchor" aria-hidden="true" href="#grenade-damage">#</a></h3>
+<ul>
+<li><strong>Direct Hit</strong>: Instant kill.</li>
+<li><strong>Area of Effect (AOE)</strong>: Damage decreases with distance from the explosion center.</li>
+</ul>
+<h3 id="special-grenades">Special Grenades<a hidden class="anchor" aria-hidden="true" href="#special-grenades">#</a></h3>
+<p>Special grenades apply unique effects in addition to the base grenade damage.</p>
+<p>Examples:</p>
+<ol>
+<li><strong>Molotov</strong>: Creates a persistent damage area.</li>
+<li><strong>Ice Orb</strong>: Slows players in the affected area.</li>
+<li><strong>HE (High-Explosive)</strong>: Large damage radius with high damage.</li>
+<li><strong>Knockback Grenade</strong>: Adds an impulse force to impacted players.</li>
+<li><strong>Healing Grenade</strong>: No damage. Direct hits restore full health. Creates a healing area.</li>
+<li><strong>Mine</strong>: Remains on the ground and triggers when stepped on.</li>
+</ol>
+<h3 id="grenade-pickup">Grenade Pickup<a hidden class="anchor" aria-hidden="true" href="#grenade-pickup">#</a></h3>
+<ul>
+<li><strong>Grenade Pickup Objects</strong> spawn randomly across the map.</li>
+<li>Different types of grenades have different spawn probabilities.</li>
+</ul>
+<h2 id="tossing">Tossing<a hidden class="anchor" aria-hidden="true" href="#tossing">#</a></h2>
+<ul>
+<li>Press and hold <strong>Left Mouse</strong> to display a projectile trajectory indicator.</li>
+<li>Release <strong>Left Mouse</strong> to toss the grenade along the indicated trajectory.</li>
+<li>A short cooldown is required between each toss.</li>
+</ul>
+<h2 id="interaction">Interaction<a hidden class="anchor" aria-hidden="true" href="#interaction">#</a></h2>
+<ul>
+<li>Hold <strong>Right Mouse</strong> to interact with environmental objects.</li>
+<li>Interactions require a specific amount of time to complete.</li>
+</ul>
+<h3 id="example-interaction">Example Interaction<a hidden class="anchor" aria-hidden="true" href="#example-interaction">#</a></h3>
+<ul>
+<li>Pick up: Interact with <strong>Grenade Pickup Objects</strong> to add the corresponding grenade to your <a href="app://obsidian.md/index.html#inventory">Inventory</a>.</li>
+</ul>
+<h2 id="inventory">Inventory<a hidden class="anchor" aria-hidden="true" href="#inventory">#</a></h2>
+<ul>
+<li>Players can hold a maximum of <strong>3 grenades</strong> at a time, regardless of type.</li>
+<li>A <strong>quick bar UI</strong> displays the current grenade reserve.</li>
+<li>Players can switch grenade types using a designated input.</li>
+</ul>
+<h1 id="ability">Ability<a hidden class="anchor" aria-hidden="true" href="#ability">#</a></h1>
+<ul>
+<li>Abilities focus on non-damage and movement-related effects.</li>
+<li>Each character has a distinct set of abilities.</li>
+</ul>
+<h2 id="example-ability-list">Example Ability List<a hidden class="anchor" aria-hidden="true" href="#example-ability-list">#</a></h2>
+<ol>
+<li><strong>Dash</strong>: Quickly move in the direction the player is facing.</li>
+<li><strong>Ice Wall</strong>: Create a temporary blocking wall.</li>
+<li><strong>Blind</strong>: Obscure the vision of enemies in front of the player.</li>
+<li><strong>Shield</strong>: Block one instance of damage.</li>
+<li><strong>Sprint</strong>: Temporarily increase movement speed.</li>
+<li><strong>Invincible</strong>: Become immune to damage for a short period, but unable to move or attack.</li>
+</ol>
+<h1 id="level-design">Level Design<a hidden class="anchor" aria-hidden="true" href="#level-design">#</a></h1>
+<ul>
+<li>Levels should include multiple high-ground areas that players can climb to for strategic advantage.</li>
+</ul>
+<h1 id="future-plan">Future Plan<a hidden class="anchor" aria-hidden="true" href="#future-plan">#</a></h1>
+<h2 id="in-game-progress">In-Game Progress<a hidden class="anchor" aria-hidden="true" href="#in-game-progress">#</a></h2>
+<ul>
+<li>As the game progresses, players earn <strong>resources</strong> (XP or currency).</li>
+<li>Players use these resources to enhance their <a href="app://obsidian.md/index.html#attribute">Attributes</a> or acquire [Roguelike Cards](app://obsidian.md/index.html#roguelike card)</li>
+</ul>
+<h2 id="attribute">Attribute<a hidden class="anchor" aria-hidden="true" href="#attribute">#</a></h2>
+<p>Attributes improve various aspects of the player character. Different attributes have unique effects.</p>
+<p>Examples:</p>
+<ol>
+<li><strong>Increased Grenade Capacity</strong>: Allows the player to hold more grenades.</li>
+<li><strong>Enhanced Movement Speed</strong>: Boosts the player’s base speed.</li>
+<li><strong>Cooldown</strong> <strong>Reduction</strong>: Shortens the cooldowns for abilities and grenade tosses.</li>
+</ol>
+<h2 id="roguelike-card">Roguelike Card<a hidden class="anchor" aria-hidden="true" href="#roguelike-card">#</a></h2>
+<ul>
+<li>Abilities are decoupled from characters and acquired through <strong>cards</strong>.</li>
+<li>Players can hold a maximum of <strong>4 cards</strong> at a time.</li>
+<li>Cards are activated using the <strong>1-4</strong> keys, with some providing passive effects or buffs.</li>
+<li><strong>Card Acquisition</strong>: Players obtain cards through a lottery system, introducing a roguelike element similar to games like <em>Balatro</em>.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="//localhost:1313/">Future Wayne</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

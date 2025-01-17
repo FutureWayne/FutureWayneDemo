@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Docs on Future Wayne</title>
+    <link>//localhost:1313/docs/</link>
+    <description>Recent content in Docs on Future Wayne</description>
+    <generator>Hugo -- 0.141.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Jan 2025 15:29:53 -0700</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>//localhost:1313/docs/test/</link>
+      <pubDate>Fri, 17 Jan 2025 15:29:53 -0700</pubDate>
+      <guid>//localhost:1313/docs/test/</guid>
+      <description>&lt;p&gt;Kaboom Arena&lt;/p&gt;
+&lt;h1 id=&#34;core-game-loop&#34;&gt;Core Game Loop&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Team Death Match&lt;/li&gt;
+&lt;li&gt;All teammate damage is enabled (friendly fire).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;combat&#34;&gt;Combat&lt;/h1&gt;
+&lt;h2 id=&#34;main-input&#34;&gt;Main Input&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Left Mouse&lt;/strong&gt;: &lt;a href=&#34;app://obsidian.md/index.html#tossing&#34;&gt;Tossing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Right Mouse&lt;/strong&gt;: &lt;a href=&#34;app://obsidian.md/index.html#interaction&#34;&gt;Interaction&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;grenade&#34;&gt;Grenade&lt;/h2&gt;
+&lt;h3 id=&#34;grenade-definition&#34;&gt;Grenade Definition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Players must pick up grenades from [Grenade Pickup](app://obsidian.md/index.html#grenade pickup) locations on the map.&lt;/li&gt;
+&lt;li&gt;Each toss consumes one grenade from the player&amp;rsquo;s &lt;a href=&#34;app://obsidian.md/index.html#inventory&#34;&gt;Inventory&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;grenade-damage&#34;&gt;Grenade Damage&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Direct Hit&lt;/strong&gt;: Instant kill.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Area of Effect (AOE)&lt;/strong&gt;: Damage decreases with distance from the explosion center.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;special-grenades&#34;&gt;Special Grenades&lt;/h3&gt;
+&lt;p&gt;Special grenades apply unique effects in addition to the base grenade damage.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

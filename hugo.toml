@@ -1,0 +1,4 @@
+baseURL = 'https://futurewayne.github.io/futurewaynedemo/'
+languageCode = 'en-us'
+title = 'Future Wayne'
+theme = 'PaperMod'
